@@ -13,8 +13,6 @@
   --cobalt-soft: #E6EDF7;
   --ember: #C9622D;
   --ember-soft: #FBEAE0;
-  --spin-up: #D7263D;
-  --spin-down: #2454A6;
   --slate: #5B6472;
   --line: #D7DCE3;
   --white: #FFFFFF;
@@ -173,25 +171,9 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero-stats dd{ margin:0; font-size:.92rem; font-weight:500; }
 
 .hero-visual{ display:flex; justify-content:center; }
-.spin-graphic{ width: 100%; max-width: 380px; }
+.loop-graphic{ width: 100%; max-width: 380px; }
 .loop-label{ font-family: var(--font-mono); font-size: 11px; fill: var(--slate); }
-#spinVector{
-  color: var(--spin-up);
-  transform-origin: 180px 180px;
-  animation: spin-flip 7s linear infinite;
-}
-#spinVector polygon, #spinVector circle{ fill: currentColor; }
-@keyframes spin-flip{
-  0%   { transform: rotate(0deg);   color: var(--spin-up); }
-  8%   { transform: rotate(18deg); }
-  25%  { transform: rotate(90deg); }
-  42%  { transform: rotate(162deg); }
-  50%  { transform: rotate(180deg); color: var(--spin-down); }
-  58%  { transform: rotate(198deg); }
-  75%  { transform: rotate(270deg); }
-  92%  { transform: rotate(342deg); }
-  100% { transform: rotate(360deg); color: var(--spin-up); }
-}
+#loopPath{ stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw 2.6s var(--ease) .2s forwards; }
 
 .scroll-hint{
   display:flex; margin: 1.5rem auto 0; background:none; border:1.5px solid var(--line); border-radius:50%;
@@ -199,6 +181,7 @@ ul{ margin:0; padding:0; list-style:none; }
   animation: bob 2.4s ease-in-out infinite;
 }
 .scroll-hint:hover{ border-color: var(--cobalt); color: var(--cobalt); }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
 @keyframes bob{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(5px);} }
 
 /* ---------- about / news ---------- */
