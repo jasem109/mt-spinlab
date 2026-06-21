@@ -24,11 +24,7 @@ export const firebaseConfig = {
 //    until the PI approves it from the Requests tab.
 //    IMPORTANT: this must exactly match the email in the Firestore
 //    security rules — see README.txt, Step 5.
-<<<<<<< HEAD
-export const PI_EMAIL = "jasem211712@gmail.com";
-=======
 export const PI_EMAIL = "jachem109@gmail.com";
->>>>>>> 991f48607a42c818d31141553bfb3ad82094985a
 
 // 3) OPTIONAL — email notifications for new access requests, via EmailJS
 //    (a free service that can send email straight from the browser, no

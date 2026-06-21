@@ -476,12 +476,7 @@ function initChat(role, uid, name) {
     messagesBox.innerHTML = '<p class="dash-empty">Loading messages…</p>';
     const q = query(
       collection(db, "messages"),
-<<<<<<< HEAD
       where("threadId", "==", threadId)
-=======
-      where("threadId", "==", threadId),
-      orderBy("createdAt", "asc")
->>>>>>> 991f48607a42c818d31141553bfb3ad82094985a
     );
     const unsub = onSnapshot(
       q,
@@ -490,7 +485,6 @@ function initChat(role, uid, name) {
           messagesBox.innerHTML = '<p class="dash-empty">No messages yet — say hello!</p>';
           return;
         }
-<<<<<<< HEAD
         const docs = [];
         snap.forEach(function (docSnap) { docs.push(docSnap.data()); });
         // Sort client-side instead of orderBy() in the query, so this never
@@ -504,11 +498,6 @@ function initChat(role, uid, name) {
         });
         messagesBox.innerHTML = "";
         docs.forEach(function (m) {
-=======
-        messagesBox.innerHTML = "";
-        snap.forEach(function (docSnap) {
-          const m = docSnap.data();
->>>>>>> 991f48607a42c818d31141553bfb3ad82094985a
           const mine = m.senderId === uid;
           const bubble = document.createElement("div");
           bubble.className = "msg " + (mine ? "msg-mine" : "msg-theirs");
