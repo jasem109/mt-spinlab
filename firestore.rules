@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() { return request.auth != null; }
+    function myRole() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role; }
+    function isPI() { return isSignedIn() && myRole() == "pi"; }
+    function isApproved() { return isSignedIn() && (myRole() == "member" || myRole() == "pi"); }
+
+    // ---- Member portal (private) ----
+    match /users/{uid} {
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow read:   if isSignedIn() && (request.auth.uid == uid || isPI());
+      allow update: if isPI();
+    }
+    match /projects/{id} { allow read: if isApproved(); allow write: if isPI(); }
+    match /labdocs/{id}  { allow read: if isApproved(); allow write: if isPI(); }
+    match /events/{id}   { allow read: if isApproved(); allow write: if isPI(); }
+    match /messages/{id} {
+      allow read:   if isApproved() && (resource.data.threadId == request.auth.uid || isPI());
+      allow create: if isApproved() && request.resource.data.senderId == request.auth.uid
+                     && (request.resource.data.threadId == request.auth.uid || isPI());
+    }
+
+    // ---- Public website content — anyone can read, only the PI can write ----
+    match /settings/{docId}    { allow read: if true; allow write: if isPI(); }
+    match /news/{id}           { allow read: if true; allow write: if isPI(); }
+    match /researchFields/{id} { allow read: if true; allow write: if isPI(); }
+    match /members/{id}        { allow read: if true; allow write: if isPI(); }
+    match /publications/{id}   { allow read: if true; allow write: if isPI(); }
+    match /teaching/{id}       { allow read: if true; allow write: if isPI(); }
+  }
+}

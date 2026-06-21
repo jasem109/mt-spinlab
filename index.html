@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MT SpinLab — Prof. Md. Torikul Islam | Computational Spintronics &amp; Magnetism</title>
+<meta name="description" content="MT SpinLab, led by Prof. Md. Torikul Islam, researches computational spintronics, micromagnetics, atomistic spin dynamics and altermagnetism." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1726'/%3E%3Cpath d='M9 22c0-7 5-12 5-12s-2 4 1 4 4-3 8-3' stroke='%232454A6' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Markdown renderer for content typed in the admin panel (Hero/About/News/Bio/etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-field" id="scrollField" aria-hidden="true"></div>
+
+<!-- ============ SHARED SVG ICON SPRITE ============ -->
+<svg class="icon-sprite" aria-hidden="true" style="display:none">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.3" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 4h3l1.6 4.2-2 1.8a12 12 0 0 0 5.4 5.4l1.8-2L20 15v3a2 2 0 0 1-2 2C10.8 20 4 13.2 4 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M9 6h9v9M18 6L7 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24"><path d="M12 4 2 9.5 12 15l10-5.5L12 4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 12v4.5C6 18 9 19.5 12 19.5s6-1.5 6-3V12" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-orcid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="9.2" cy="8.6" r=".9" fill="currentColor"/><path d="M9.2 11v6.2M12.6 11v6.2M12.6 13.8c0-1.7 1.3-2.8 2.7-2.8s2.6 1.1 2.6 2.8-1.2 3.4-2.6 3.4h-2.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.3-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="currentColor"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="14" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 9h6M7.5 12.3h6M7.5 15.6h3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M17.5 8.5h2a1 1 0 0 1 1 1V18a2.5 2.5 0 0 1-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7a1.5 1.5 0 0 1 1.5-1.5h4l2 2h8a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 18.5H5A1.5 1.5 0 0 1 3.5 17V7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-4 4v-4H4V5.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5" stroke="currentColor" stroke-width="1.6"/><line x1="8" y1="3.5" x2="8" y2="7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="16" y1="3.5" x2="16" y2="7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M3 11l18-7-7 18-2.5-7.5L3 11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.3" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 19c0-3.5 3-6 7-6s7 2.5 7 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3.5" y1="10" x2="20.5" y2="10" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="10" x2="12" y2="20.5" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c2-1 5-1 7 0v13c-2-1-5-1-7 0V5.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 5.5c-2-1-5-1-7 0v13c2-1 5-1 7 0V5.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4l11-11-4-4L4 16v4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-9 0 1 13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1l1-13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="brand" data-link>
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="9" fill="var(--ink)"/>
+        <path d="M10 27c0-9 6-15 6-15s-2.4 5 1.4 5 5-4 9.6-4" fill="none" stroke="var(--cobalt)" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="27" cy="13" r="1.8" fill="var(--ember)"/>
+      </svg>
+      <span class="brand-text">MT&nbsp;<span class="brand-accent">Spin</span>Lab</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a data-link href="#home">Home</a>
+      <a data-link href="#research">Research</a>
+      <a data-link href="#people">People</a>
+      <a data-link href="#publications">Publications</a>
+      <a data-link href="#teaching">Teaching</a>
+      <a data-link href="#contact">Contact</a>
+      <a data-link href="#members">Members <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg></a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================================================= -->
+  <!-- HOME PAGE                                                -->
+  <!-- ======================================================= -->
+  <section class="page" id="home" data-page>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" id="heroEyebrow">Khulna University &middot; Department of Physics</p>
+          <h1 id="heroTitle">MT SpinLab</h1>
+          <p class="hero-sub" id="heroSub">Computational Spintronics &amp; Magnetism Research Group</p>
+          <p class="hero-lede" id="heroLede">
+            We simulate how spins move, switch and interact &mdash; from atomistic spin
+            dynamics in altermagnets to thermally stable cylindrical magnetic tunnel
+            junctions &mdash; in pursuit of faster, denser, lower&#8209;power spintronic memory.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" data-link href="#research">View our research <svg class="icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" data-link href="#contact">Join the lab</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>Focus</dt><dd id="statFocus">Micromagnetics &amp; atomistic spin dynamics</dd></div>
+            <div><dt>Tools</dt><dd id="statTools">mumax3 &middot; mumax+ &middot; Vampire</dd></div>
+            <div><dt>Home</dt><dd id="statHome">Khulna, Bangladesh</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 360 360" class="spin-graphic" id="spinGraphic">
+            <circle cx="180" cy="180" r="108" fill="none" stroke="var(--line)" stroke-width="1"/>
+            <line x1="180" y1="44" x2="180" y2="316" stroke="var(--line)" stroke-width="1"/>
+            <line x1="72" y1="180" x2="288" y2="180" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 5"/>
+            <text x="192" y="50" class="loop-label">+z</text>
+            <text x="190" y="328" class="loop-label">&#8722;z</text>
+            <g id="spinVector">
+              <line x1="180" y1="180" x2="180" y2="86" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+              <polygon points="170,97 190,97 180,70"/>
+              <circle cx="180" cy="180" r="5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <button class="scroll-hint" id="scrollHint" aria-label="Scroll to learn more">
+        <svg class="icon" viewBox="0 0 24 24"><use href="#i-down"/></svg>
+      </button>
+    </section>
+
+    <section class="about" id="aboutSection">
+      <div class="container">
+        <p class="eyebrow">About the lab</p>
+        <h2 class="section-title">Brief description</h2>
+        <div class="about-grid">
+          <p class="lede" id="aboutPara1">
+            MT SpinLab is the computational spintronics and magnetism research group
+            of <strong>Prof. Md. Torikul Islam</strong> in the Department of Physics,
+            Khulna University.
+          </p>
+          <p id="aboutPara2">
+            Current work spans spin&#8209;orbit&#8209;torque&#8209;driven switching,
+            domain&#8209;wall dynamics in altermagnets, and the thermal stability of
+            cylindrical magnetic tunnel junctions for low&#8209;power memory applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="news" id="newsSection">
+      <div class="container">
+        <p class="eyebrow">Latest</p>
+        <h2 class="section-title">News</h2>
+        <ul class="news-list" id="newsList">
+          <li class="news-item"><p class="dash-empty">Loading news&hellip;</p></li>
+        </ul>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- RESEARCH PAGE                                            -->
+  <!-- ======================================================= -->
+  <section class="page" id="research" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">What we work on</p>
+      <h2 class="section-title">Research</h2>
+      <p class="lede" id="researchIntro">
+        Our research sits at the boundary of computational magnetism and spintronic
+        device physics. Below are the core directions currently active in the group.
+      </p>
+    </div>
+
+    <div class="container research-grid" id="researchGrid">
+      <p class="dash-empty">Loading research areas&hellip;</p>
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- PEOPLE PAGE (Principal Investigator)                     -->
+  <!-- ======================================================= -->
+  <section class="page" id="people" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">The group</p>
+      <h2 class="section-title">People</h2>
+      <p class="lede">Meet the principal investigator, current lab members, and alumni of MT SpinLab.</p>
+    </div>
+
+    <div class="container people-layout">
+      <div class="pi-photo">
+        <div id="piAvatarWrap"><div class="avatar avatar-lg" aria-hidden="true" id="piAvatarInitials">MTI</div></div>
+        <ul class="pi-links">
+          <li id="piScholarItem" hidden><a id="piScholarLink" href="#" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><use href="#i-scholar"/></svg> Google Scholar</a></li>
+          <li id="piOrcidItem" hidden><a id="piOrcidLink" href="#" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><use href="#i-orcid"/></svg> ORCID</a></li>
+          <li><a id="piEmailLink" href="mailto:"><svg class="icon" viewBox="0 0 24 24"><use href="#i-mail"/></svg> Email</a></li>
+        </ul>
+        <a class="btn btn-ghost btn-block" id="piCvLink" href="#" target="_blank" rel="noopener" hidden>Download CV <svg class="icon" viewBox="0 0 24 24"><use href="#i-ext"/></svg></a>
+      </div>
+
+      <div class="pi-bio">
+        <h3 id="piName">Prof. Md. Torikul Islam</h3>
+        <p class="pi-role" id="piTitle">Professor, Department of Physics &middot; Principal Investigator, MT SpinLab</p>
+
+        <p id="piBio">
+          Prof. Md. Torikul Islam leads the MT SpinLab at Khulna University.
+        </p>
+
+        <h4>Education</h4>
+        <ul class="plain-list" id="piEducationList"></ul>
+
+        <h4>Research interests</h4>
+        <ul class="tag-list" id="piInterestsList"></ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3 class="subgroup-title">Current members</h3>
+      <div class="members-grid" id="currentMembersGrid">
+        <p class="dash-empty">Loading members&hellip;</p>
+      </div>
+
+      <h3 class="subgroup-title">Alumni</h3>
+      <div class="members-grid" id="alumniMembersGrid">
+        <p class="dash-empty">Loading alumni&hellip;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- PUBLICATIONS PAGE                                        -->
+  <!-- ======================================================= -->
+  <section class="page" id="publications" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="section-title">Publications</h2>
+      <p class="lede">Grouped by year, most recent first.</p>
+    </div>
+
+    <div class="container pub-years" id="pubYears">
+      <p class="dash-empty">Loading publications&hellip;</p>
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- TEACHING PAGE                                            -->
+  <!-- ======================================================= -->
+  <section class="page" id="teaching" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">In the classroom</p>
+      <h2 class="section-title">Teaching</h2>
+      <p class="lede">Courses taught by Prof. Md. Torikul Islam in the Department of Physics, Khulna University.</p>
+    </div>
+
+    <div class="container teaching-grid" id="teachingGrid">
+      <p class="dash-empty">Loading courses&hellip;</p>
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- CONTACT PAGE                                             -->
+  <!-- ======================================================= -->
+  <section class="page" id="contact" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="section-title">Contact</h2>
+    </div>
+
+    <div class="container contact-layout">
+      <div class="contact-info">
+        <ul class="contact-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><use href="#i-pin"/></svg>
+            <span id="contactAddress">Department of Physics, Khulna University,<br/>Khulna&#8209;9208, Bangladesh</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><use href="#i-mail"/></svg>
+            <span><a id="contactEmailLink" href="mailto:">torikul.islam@example.edu</a></span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><use href="#i-phone"/></svg>
+            <span id="contactPhone">+880 XXX&#8209;XXXXXX</span></li>
+        </ul>
+        <div class="map-frame">
+          <iframe title="Lab location map" id="contactMapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Khulna%20University%2C%20Khulna%2C%20Bangladesh&output=embed"></iframe>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <h3>Send a message</h3>
+        <label for="cf-name">Name</label>
+        <input id="cf-name" name="name" type="text" required />
+
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" required />
+
+        <label for="cf-subject">Subject</label>
+        <input id="cf-subject" name="subject" type="text" />
+
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn btn-primary btn-block">Send message <svg class="icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- MEMBERS PAGE — private member portal (Firebase Auth)    -->
+  <!-- ======================================================= -->
+  <section class="page" id="members" data-page hidden>
+    <div class="container page-head">
+      <p class="eyebrow">Private area</p>
+      <h2 class="section-title">Member Portal</h2>
+      <p class="lede">Sign in with Google to request access. Prof. Islam reviews and approves new members before they can use the portal.</p>
+    </div>
+
+    <div class="container portal-wrap">
+
+      <!-- SIGNED OUT: Google sign-in -->
+      <div class="portal-card" id="loginCard">
+        <svg class="icon portal-lock" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg>
+        <h3>Member sign in</h3>
+        <p class="portal-hint" style="margin-top:0">
+          New here? Signing in creates an access request — Prof. Md. Torikul
+          Islam will be notified and can approve you from his dashboard.
+        </p>
+        <button class="btn btn-google btn-block" id="googleBtn" type="button">
+          <svg class="g-icon" viewBox="0 0 18 18" aria-hidden="true">
+            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+            <path fill="#FBBC05" d="M3.964 10.706A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.706V4.962H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.038l3.007-2.332z"/>
+            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.962L3.964 7.294C4.672 5.167 6.656 3.58 9 3.58z"/>
+          </svg>
+          Continue with Google
+        </button>
+        <p class="form-note" id="loginNote" role="status"></p>
+      </div>
+
+      <!-- SIGNED IN, AWAITING/DENIED APPROVAL -->
+      <div class="portal-card" id="statusCard" hidden>
+        <svg class="icon portal-lock" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg>
+        <h3 id="statusTitle">Request sent</h3>
+        <p id="statusMessage">Thanks! Your request to join MT SpinLab's member portal has been sent to Prof. Md. Torikul Islam. You'll get access as soon as it's approved — no need to refresh, this page will update on its own.</p>
+        <button class="btn btn-ghost btn-block" id="statusSignOut" type="button">Sign out</button>
+      </div>
+
+      <!-- APPROVED: DASHBOARD -->
+      <div class="portal-dashboard" id="dashboard" hidden>
+        <div class="dashboard-head">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h3 id="dashName">&nbsp;</h3>
+          </div>
+          <button class="btn btn-ghost" id="logoutBtn" type="button">Sign out</button>
+        </div>
+
+        <div class="dash-tabs" role="tablist">
+          <button class="dash-tab active tab-pi-only" data-tab="siteHome" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-news"/></svg> <span>Home &amp; News</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="siteResearch" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-layout"/></svg> <span>Research</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="sitePeople" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-user"/></svg> <span>People</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="sitePubs" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-book"/></svg> <span>Publications</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="siteTeaching" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-cap"/></svg> <span>Teaching</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="siteContact" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-pin"/></svg> <span>Contact &amp; Footer</span></button>
+          <span class="dash-tabs-sep tab-pi-only" aria-hidden="true" hidden></span>
+          <button class="dash-tab" data-tab="projects" type="button" role="tab"><svg class="icon" viewBox="0 0 24 24"><use href="#i-folder"/></svg> <span>Projects</span></button>
+          <button class="dash-tab" data-tab="docs" type="button" role="tab"><svg class="icon" viewBox="0 0 24 24"><use href="#i-news"/></svg> <span>Lab Docs</span></button>
+          <button class="dash-tab" data-tab="chat" type="button" role="tab"><svg class="icon" viewBox="0 0 24 24"><use href="#i-chat"/></svg> <span>Chat</span></button>
+          <button class="dash-tab" data-tab="events" type="button" role="tab"><svg class="icon" viewBox="0 0 24 24"><use href="#i-calendar"/></svg> <span>Events</span></button>
+          <button class="dash-tab tab-pi-only" data-tab="requests" type="button" role="tab" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-user"/></svg> <span>Requests</span> <span class="tab-badge" id="requestsBadge" hidden>0</span></button>
+        </div>
+
+        <!-- ============== SITE CONTENT: Home & News (PI only) ============== -->
+        <div class="dash-panel active" data-panel="siteHome" id="panel-siteHome">
+          <h4 class="dash-section-title">Home page — hero &amp; about</h4>
+          <form class="dash-add-form dash-settings-form" id="homeSettingsForm">
+            <input type="text" id="home-eyebrow" placeholder="Eyebrow (small line above the title)" />
+            <input type="text" id="home-title" placeholder="Big title (e.g. MT SpinLab)" />
+            <input type="text" id="home-sub" placeholder="Subtitle" />
+            <textarea id="home-lede" placeholder="Hero summary paragraph (Markdown supported)" rows="3"></textarea>
+            <input type="text" id="home-stat-focus" placeholder="Stat: Focus" />
+            <input type="text" id="home-stat-tools" placeholder="Stat: Tools" />
+            <input type="text" id="home-stat-home" placeholder="Stat: Home" />
+            <textarea id="home-about1" placeholder="About — paragraph 1 (Markdown supported)" rows="3"></textarea>
+            <textarea id="home-about2" placeholder="About — paragraph 2 (Markdown supported)" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">Save home &amp; about</button>
+            <p class="form-note" id="homeSettingsNote"></p>
+          </form>
+
+          <h4 class="dash-section-title">News</h4>
+          <form class="dash-add-form" id="newsForm">
+            <input type="text" id="news-date" placeholder="Date label (e.g. May 2026)" required />
+            <input type="hidden" id="news-editing-id" />
+            <textarea id="news-body" placeholder="News text (Markdown supported)" rows="2" required></textarea>
+            <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="newsSubmitBtn">Add news item</button>
+            <button type="button" class="btn btn-ghost" id="newsCancelEdit" hidden>Cancel edit</button>
+          </div>
+          </form>
+          <div class="dash-list" id="newsAdminList"><p class="dash-empty">Loading&hellip;</p></div>
+        </div>
+
+        <!-- ============== SITE CONTENT: Research (PI only) ============== -->
+        <div class="dash-panel" data-panel="siteResearch" id="panel-siteResearch">
+          <h4 class="dash-section-title">Research page intro</h4>
+          <form class="dash-add-form dash-settings-form" id="researchSettingsForm">
+            <textarea id="research-intro" placeholder="Research intro paragraph (Markdown supported)" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">Save intro</button>
+            <p class="form-note" id="researchSettingsNote"></p>
+          </form>
+
+          <h4 class="dash-section-title">Research focus areas</h4>
+          <form class="dash-add-form" id="researchFieldForm">
+            <input type="text" id="rf-title" placeholder="Card title" required />
+            <select id="rf-icon">
+              <option value="spins">Icon: Spin arrows</option>
+              <option value="loop">Icon: Hysteresis loop</option>
+              <option value="torque">Icon: Torque switching</option>
+              <option value="stack">Icon: Layer stack</option>
+              <option value="wave">Icon: Domain wave</option>
+              <option value="atom">Icon: Atom / lattice</option>
+            </select>
+            <input type="hidden" id="rf-editing-id" />
+            <textarea id="rf-body" placeholder="Card description (Markdown supported)" rows="2" required></textarea>
+            <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="rfSubmitBtn">Add research area</button>
+            <button type="button" class="btn btn-ghost" id="rfCancelEdit" hidden>Cancel edit</button>
+          </div>
+          </form>
+          <div class="dash-list" id="researchFieldsAdminList"><p class="dash-empty">Loading&hellip;</p></div>
+        </div>
+
+        <!-- ============== SITE CONTENT: People (PI only) ============== -->
+        <div class="dash-panel" data-panel="sitePeople" id="panel-sitePeople">
+          <h4 class="dash-section-title">PI profile</h4>
+          <form class="dash-add-form dash-settings-form" id="piSettingsForm">
+            <input type="text" id="pi-name" placeholder="Full name" />
+            <input type="text" id="pi-title" placeholder="Title / role line" />
+            <input type="text" id="pi-photo" placeholder="Photo path or URL, e.g. assets/torikul-islam.jpg" />
+            <input type="text" id="pi-interests" placeholder="Research interests, comma-separated" />
+            <textarea id="pi-bio" placeholder="Bio (Markdown supported)" rows="3"></textarea>
+            <textarea id="pi-education" placeholder="Education — one entry per line, e.g.&#10;Ph.D. in Physics, XYZ University, 2015" rows="3"></textarea>
+            <input type="url" id="pi-scholar" placeholder="Google Scholar URL (optional)" />
+            <input type="url" id="pi-orcid" placeholder="ORCID URL (optional)" />
+            <input type="url" id="pi-github" placeholder="GitHub URL (optional)" />
+            <input type="url" id="pi-cv" placeholder="CV link (optional)" />
+            <button type="submit" class="btn btn-primary">Save PI profile</button>
+            <p class="form-note" id="piSettingsNote"></p>
+          </form>
+
+          <h4 class="dash-section-title">Members &amp; alumni</h4>
+          <form class="dash-add-form" id="memberForm">
+            <input type="text" id="member-name" placeholder="Name" required />
+            <select id="member-status">
+              <option value="current">Current member</option>
+              <option value="alumni">Alumnus / alumna</option>
+            </select>
+            <input type="text" id="member-role" placeholder="Role (e.g. MSc Student)" required />
+            <input type="text" id="member-photo" placeholder="Photo path or URL (optional)" />
+            <input type="text" id="member-focus" placeholder="Research focus (current members)" />
+            <input type="text" id="member-institution" placeholder="Now at&hellip; (alumni only)" />
+            <input type="hidden" id="member-editing-id" />
+            <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="memberSubmitBtn">Add member</button>
+            <button type="button" class="btn btn-ghost" id="memberCancelEdit" hidden>Cancel edit</button>
+          </div>
+          </form>
+          <div class="dash-list" id="membersAdminList"><p class="dash-empty">Loading&hellip;</p></div>
+        </div>
+
+        <!-- ============== SITE CONTENT: Publications (PI only) ============== -->
+        <div class="dash-panel" data-panel="sitePubs" id="panel-sitePubs">
+          <h4 class="dash-section-title">Publications</h4>
+          <form class="dash-add-form" id="pubForm">
+            <input type="number" id="pub-year" placeholder="Year (e.g. 2026)" required />
+            <input type="text" id="pub-authors" placeholder="Authors (e.g. M. T. Islam, et al.)" required />
+            <input type="text" id="pub-journal" placeholder="Journal" required />
+            <input type="text" id="pub-details" placeholder="Details (vol./pages/status)" />
+            <input type="url" id="pub-doi" placeholder="DOI link (optional)" />
+            <input type="hidden" id="pub-editing-id" />
+            <textarea id="pub-title" placeholder="Publication title" rows="2" required></textarea>
+            <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="pubSubmitBtn">Add publication</button>
+            <button type="button" class="btn btn-ghost" id="pubCancelEdit" hidden>Cancel edit</button>
+          </div>
+          </form>
+          <div class="dash-list" id="pubsAdminList"><p class="dash-empty">Loading&hellip;</p></div>
+        </div>
+
+        <!-- ============== SITE CONTENT: Teaching (PI only) ============== -->
+        <div class="dash-panel" data-panel="siteTeaching" id="panel-siteTeaching">
+          <h4 class="dash-section-title">Teaching</h4>
+          <form class="dash-add-form" id="teachingForm">
+            <input type="text" id="teach-code" placeholder="Course code (e.g. PHY 4101)" required />
+            <input type="text" id="teach-title" placeholder="Course title" required />
+            <input type="hidden" id="teach-editing-id" />
+            <textarea id="teach-body" placeholder="Course description (Markdown supported)" rows="2" required></textarea>
+            <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="teachSubmitBtn">Add course</button>
+            <button type="button" class="btn btn-ghost" id="teachCancelEdit" hidden>Cancel edit</button>
+          </div>
+          </form>
+          <div class="dash-list" id="teachingAdminList"><p class="dash-empty">Loading&hellip;</p></div>
+        </div>
+
+        <!-- ============== SITE CONTENT: Contact & Footer (PI only) ============== -->
+        <div class="dash-panel" data-panel="siteContact" id="panel-siteContact">
+          <h4 class="dash-section-title">Contact info &amp; footer</h4>
+          <form class="dash-add-form dash-settings-form" id="contactSettingsForm">
+            <textarea id="contact-address" placeholder="Address" rows="2"></textarea>
+            <input type="text" id="contact-phone" placeholder="Phone" />
+            <input type="email" id="contact-email" placeholder="Contact email (used for mailto links &amp; the contact form)" />
+            <input type="text" id="contact-map" placeholder="Map search text, e.g. Khulna University, Khulna, Bangladesh" />
+            <input type="text" id="contact-footer-tagline" placeholder="Footer tagline" />
+            <button type="submit" class="btn btn-primary">Save contact &amp; footer</button>
+            <p class="form-note" id="contactSettingsNote"></p>
+          </form>
+        </div>
+
+        <!-- Projects -->
+        <div class="dash-panel" data-panel="projects" id="panel-projects">
+          <form class="dash-add-form" id="projectForm" hidden>
+            <input type="text" id="project-title" placeholder="Project title" required />
+            <input type="text" id="project-status" placeholder="Status (e.g. Ongoing)" />
+            <textarea id="project-desc" placeholder="Short description" rows="2"></textarea>
+            <button type="submit" class="btn btn-primary">Add project</button>
+          </form>
+          <div class="dash-list" id="projectsList"><p class="dash-empty">Loading projects&hellip;</p></div>
+        </div>
+
+        <!-- Lab Docs -->
+        <div class="dash-panel" data-panel="docs" id="panel-docs">
+          <form class="dash-add-form" id="docForm" hidden>
+            <input type="text" id="doc-title" placeholder="Document title" required />
+            <input type="url" id="doc-url" placeholder="Link (Drive, PDF, etc.)" required />
+            <button type="submit" class="btn btn-primary">Add document</button>
+          </form>
+          <div class="dash-list" id="docsList"><p class="dash-empty">Loading lab docs&hellip;</p></div>
+        </div>
+
+        <!-- Chat — each member talks to Prof. Islam in a private thread -->
+        <div class="dash-panel" data-panel="chat" id="panel-chat">
+          <div class="chat-wrap">
+            <div class="chat-threads" id="chatThreads" hidden>
+              <p class="dash-empty">Loading members&hellip;</p>
+            </div>
+            <div class="chat-main">
+              <p class="chat-with" id="chatWith">Conversation with Prof. Md. Torikul Islam</p>
+              <div class="chat-messages" id="chatMessages"><p class="dash-empty">No messages yet &mdash; say hello!</p></div>
+              <form class="chat-input-row" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Type a message&hellip;" autocomplete="off" required />
+                <button type="submit" class="btn btn-primary" aria-label="Send"><svg class="icon" viewBox="0 0 24 24"><use href="#i-send"/></svg></button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="dash-panel" data-panel="events" id="panel-events">
+          <form class="dash-add-form" id="eventForm" hidden>
+            <input type="text" id="event-title" placeholder="Event title" required />
+            <input type="date" id="event-date" required />
+            <input type="text" id="event-location" placeholder="Location (optional)" />
+            <textarea id="event-desc" placeholder="Details" rows="2"></textarea>
+            <button type="submit" class="btn btn-primary">Add event</button>
+          </form>
+          <div class="dash-list" id="eventsList"><p class="dash-empty">Loading events&hellip;</p></div>
+        </div>
+
+        <!-- Requests — PI only: approve or decline new sign-ups -->
+        <div class="dash-panel" data-panel="requests" id="panel-requests">
+          <p class="lede" style="margin-bottom:1.2rem">People who signed in with Google and are waiting for access.</p>
+          <div class="dash-list" id="requestsList"><p class="dash-empty">Loading requests&hellip;</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================= -->
+<!-- FOOTER                                                   -->
+<!-- ======================================================= -->
+<footer class="site-footer">
+  <svg class="footer-watermark" viewBox="0 0 360 120" aria-hidden="true" preserveAspectRatio="none">
+    <path d="M0,90 C40,30 80,10 120,10 C170,10 190,70 240,70 C290,70 310,30 360,30" fill="none" stroke="currentColor" stroke-width="2"/>
+  </svg>
+
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="brand" data-link>
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <rect width="40" height="40" rx="9" fill="var(--paper)"/>
+          <path d="M10 27c0-9 6-15 6-15s-2.4 5 1.4 5 5-4 9.6-4" fill="none" stroke="var(--cobalt)" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="27" cy="13" r="1.8" fill="var(--ember)"/>
+        </svg>
+        <span class="brand-text">MT&nbsp;<span class="brand-accent">Spin</span>Lab</span>
+      </a>
+      <p id="footerTagline">Computational Spintronics &amp; Magnetism Research Group<br/>Department of Physics, Khulna University</p>
+    </div>
+
+    <nav class="footer-col">
+      <h5>Explore</h5>
+      <a data-link href="#home">Home</a>
+      <a data-link href="#research">Research</a>
+      <a data-link href="#people">People</a>
+      <a data-link href="#publications">Publications</a>
+      <a data-link href="#teaching">Teaching</a>
+      <a data-link href="#members">Members <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg></a>
+    </nav>
+
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <p id="footerAddress">Dept. of Physics, Khulna University,<br/>Khulna&#8209;9208, Bangladesh</p>
+      <p><a id="footerEmailLink" href="mailto:">torikul.islam@example.edu</a></p>
+      <a class="footer-cta" data-link href="#contact">Get in touch <svg class="icon" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Follow</h5>
+      <div class="footer-social">
+        <a id="footerScholarLink" href="#" target="_blank" rel="noopener" aria-label="Google Scholar" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-scholar"/></svg></a>
+        <a id="footerOrcidLink" href="#" target="_blank" rel="noopener" aria-label="ORCID" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-orcid"/></svg></a>
+        <a id="footerGithubLink" href="#" target="_blank" rel="noopener" aria-label="GitHub" hidden><svg class="icon" viewBox="0 0 24 24"><use href="#i-github"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> MT SpinLab, Department of Physics, Khulna University. All rights reserved.</p>
+    <p>Built with HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/script.js"></script>
+<script type="module" src="js/content.js"></script>
+<script type="module" src="js/members.js"></script>
+</body>
+</html>
