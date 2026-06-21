@@ -105,6 +105,7 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
+<<<<<<< HEAD
           <svg viewBox="0 0 360 360" class="spin-graphic" id="spinGraphic">
             <circle cx="180" cy="180" r="108" fill="none" stroke="var(--line)" stroke-width="1"/>
             <line x1="180" y1="44" x2="180" y2="316" stroke="var(--line)" stroke-width="1"/>
@@ -116,6 +117,27 @@
               <polygon points="170,97 190,97 180,70"/>
               <circle cx="180" cy="180" r="5"/>
             </g>
+=======
+          <svg viewBox="0 0 360 360" class="loop-graphic" id="loopGraphic">
+            <defs>
+              <linearGradient id="loopGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--cobalt)"/>
+                <stop offset="1" stop-color="var(--ember)"/>
+              </linearGradient>
+            </defs>
+            <g stroke="var(--line)" stroke-width="1">
+              <line x1="40" y1="180" x2="320" y2="180"/>
+              <line x1="180" y1="30" x2="180" y2="330"/>
+            </g>
+            <text x="324" y="176" class="loop-label">H</text>
+            <text x="186" y="38" class="loop-label">M</text>
+            <path id="loopPath" d="M70,180 C90,90 150,55 180,55 C230,55 250,110 250,150
+                     C250,190 220,210 180,210 C140,210 90,230 90,270
+                     C90,300 130,305 180,305 C260,305 290,250 290,180
+                     C290,110 260,55 180,55 C100,55 70,110 70,150
+                     C70,190 100,230 140,230 C170,230 195,215 195,180"
+                  fill="none" stroke="url(#loopGrad)" stroke-width="3.4" stroke-linecap="round"/>
+>>>>>>> 991f48607a42c818d31141553bfb3ad82094985a
           </svg>
         </div>
       </div>
